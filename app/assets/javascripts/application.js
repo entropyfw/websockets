@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-var socket;
+/*var socket;
 var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function animateCharacter(letter)
@@ -51,4 +51,19 @@ function connect(){
 
 };
 
-window.onload += setup();
+window.onload += setup();*/
+var socket;
+function connect(){
+  socket = new WebSocket('ws://127.0.0.1:8080');
+  socket.onmessage = function(mess) {
+  $(".well").append(mess.data);
+  };
+}
+function SendOnClick(){
+  var msg = $("input").val();
+  socket.send(msg);
+};
+connect();
+$(document).ready(function(){
+  $("button").click(SendOnClick)});
+
