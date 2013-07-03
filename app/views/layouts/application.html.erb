@@ -9,23 +9,34 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="container">
-      <%= yield %>
-    </div>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="/">RealTimeChat</a>
-            <ul class="nav">
-            <li class="active"><a href="/">Welcome</a></li>
-          </ul>
         </div>
       </div>
     </div>
-    <footer>
     <div class="container">
-      2013 GeekWeek @genua
+      <div class="content">
+        <div class="row">
+          <div class="span9">
+            blablablah
+            <%= yield %>
+          </div>
+          <div class="span3">
+            <div class="well sidebar-nav">
+              <h3>Users</h3>
+              <ul class="nav nav-list" id="user-list">
+                <li class="nav-header">Active</li>
+              </ul>
+            </div>
+        </div>
+      </div>
     </div>
+    <footer class="navbar-fixed-bottom">
+      <div class="container">
+        2013 GeekWeek @genua
+      </div>
     </footer>
   </body>
 </html>
