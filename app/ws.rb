@@ -1,7 +1,7 @@
 require 'websocket-eventmachine-server'
 EM.run do
   @sockets = []
-  WebSocket::EventMachine::Server.start(:host => "0.0.0.0", :port => 8080) do
+  WebSocket::EventMachine::Server.start(:host => "192.168.5.10", :port => 8080) do
     |ws|
     ws.onopen do
       @sockets << ws

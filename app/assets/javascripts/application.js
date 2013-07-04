@@ -54,16 +54,30 @@ function connect(){
 window.onload += setup();*/
 var socket;
 function connect(){
-  socket = new WebSocket('ws://127.0.0.1:8080');
+  socket = new WebSocket('ws://192.168.5.10:8080');
   socket.onmessage = function(mess) {
-  $(".well").append(mess.data);
+  $("#chat").append(mess.data+"<br/>");
   };
 }
 function SendOnClick(){
   var msg = $("input").val();
-  socket.send(msg);
+  if(!msg == ''){
+    socket.send(msg);
+    $("input").val('');
+  };
 };
 connect();
 $(document).ready(function(){
-  $("button").click(SendOnClick)});
-
+  $("input").on('keypress', function (event) {
+    if(event.which == 13){
+      var msg = $("input").val();
+      if(!msg == ''){
+        socket.send(msg);
+        $("input").val('');
+      };
+      };
+  });
+});
+$(document).ready(function(){
+  $("button").click(SendOnClick);
+});
